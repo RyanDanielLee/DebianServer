@@ -133,19 +133,20 @@ Then, save and quit the file.
 Once we have our server contents implemented, we want to create a config file that actually runs the server. To do this, change directories into **/etc/nginx/sites-available** and create a file using sudo vim called **my-site.conf**. Then, paste the following code.
 
     server {
-    listen 80;
-    listen [::]:80;
-
-    root /var/www/my-site;
-
-    index index.html index.htm index.nginx-debian.html;
-
-    server_name _;
-
-    location / {
-        # First attempt to serve request as file, then
-        # as directory, then fall back to displaying a 404.
-        try_files $uri $uri/ =404;
+        listen 80;
+        listen [::]:80;
+    
+        root /var/www/my-site;
+    
+        index index.html index.htm index.nginx-debian.html;
+    
+        server_name _;
+    
+        location / {
+            # First attempt to serve request as file, then
+            # as directory, then fall back to displaying a 404.
+            try_files $uri $uri/ =404;
+        }
     }
 
 Now save and quit the file, and change directories into **/etc/nginx/sites-enabled**.
